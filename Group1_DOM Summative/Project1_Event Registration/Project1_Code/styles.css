@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-color: #f4f4f4;
+}
+
+header {
+	background-color: #007bff;
+	color: white;
+	padding: 20px;
+}
+
+/* Layout */
+.registration-form,
+.attendee-list {
+	max-width: 500px;
+	margin: 20px auto;
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: left;
+}
+
+/* Form Styling */
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+input,
+select {
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+/* Button */
+button {
+	padding: 10px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+	background-color: #218838;
+}
+
+/* Error Messages */
+.error {
+	color: red;
+	font-size: 14px;
+	margin-bottom: 10px;
+	display: none;
+}
+
+/* Attendee List - Table Container */
+.table-container {
+	width: 100%;
+	overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+/* Attendee List - Table */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+	min-width: 500px; /* Prevents shrinking */
+}
+
+th,
+td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+	white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Header Row */
+th {
+	background-color: #007bff;
+	color: white;
+}

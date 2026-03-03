@@ -1,0 +1,140 @@
+/* General Styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background-color: #f4f4f4;
+}
+
+header {
+	background-color: #007bff;
+	color: white;
+	padding: 20px;
+}
+
+/* Layout */
+.container {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Form Container */
+.form-container {
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 50%;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+label {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+input {
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+button {
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+/* Error Message */
+.error {
+	color: red;
+	font-size: 14px;
+	margin-bottom: 10px;
+	display: none;
+}
+
+/* ID Card */
+.id-card {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	background: #ffffff;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	text-align: left;
+	border: 3px dashed black;
+}
+
+/* ID Card Header */
+.id-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #007bff;
+	padding: 10px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+.id-header img {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.id-header h2 {
+	font-size: 18px;
+	color: white;
+}
+
+/* ID Card Content */
+.id-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 15px;
+	padding: 15px;
+}
+
+/* Photo */
+#idPhoto {
+	width: 120px;
+	height: 120px;
+	border-radius: 10px;
+	border: 2px solid #ccc;
+}
+
+/* ID Details */
+.id-details {
+	flex: 1;
+}
+
+.id-details p {
+	font-size: 14px;
+	margin: 5px 0;
+}
+
+.id-details span {
+	font-weight: bold;
+	color: #007bff;
+}

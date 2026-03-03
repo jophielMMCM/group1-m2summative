@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Advanced To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>To-Do List</h1>
+    </header>
+
+    <main>
+        <!-- Add New Task -->
+        <section class="task-form">
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <input type="text" id="taskInput" placeholder="Enter a task" required />
+                <select id="taskCategory">
+                    <option value="All">All Categories</option>
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Other">Other</option>
+                </select>
+                <select id="taskPriority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <input type="date" id="taskDueDate" required />
+                <button type="submit">Add Task</button>
+            </form>
+        </section>
+
+        <hr />
+
+        <!-- Filter Tasks -->
+        <section class="task-filters">
+            <h2>Filter Tasks</h2>
+            <select id="filterCategory">
+                <option value="All">All Categories</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
+            </select>
+        </section>
+
+        <hr />
+
+        <!-- Incomplete Tasks -->
+        <section>
+            <h2>Incomplete Tasks</h2>
+            <ul id="incompleteList"></ul>
+        </section>
+
+        <hr />
+
+        <!-- Completed Tasks -->
+        <section>
+            <h2>Completed Tasks</h2>
+            <ul id="completedList"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
