@@ -1,9 +1,8 @@
 //Access elements from DOM tree
-const nameInput = document.getElementById("full name");
+const nameInput = document.getElementById("fullName"); 
 const emailInput = document.getElementById("email");
-const eventSelect = document.getElementById("event");
+const eventSelect = document.getElementById("eventChoice"); 
 const registerBtn = document.getElementById("registerBtn");
-const attendeeList = document.getElementById("attendeeList");
 const attendeeTableBody = document.getElementById("attendeeTableBody");
 const filterEvent = document.getElementById("filterEvent");
 
@@ -24,33 +23,87 @@ function validatedForm() {
   const isFilled = name !== "" && email !== "" && event !== "";
   registerBtn.disabled = !isFilled; 
 
+  if (name !== "") nameError.style.display = "none";
+  if (email.includes("@") && email.includes(".")) emailError.style.display = "none";
+  if (event !== "") eventError.style.display = "none";
+
   //Validation check
   const isNameValid = name !== "";
   const isEmailValid = email.includes("@") && email.includes(".");
   const isEventValid = event !== "";
 
-  //Display error messages (manipulate CSS classes)
-  if (name === "") {
-    nameError.textContent = "Full name is required.";
-    nameError.style.display = "block";
-    return false;
-  }
-
-  if (!email.includes("@") || !email.includes(".")) {
-    emailError.textContent = "Enter a valid email address.";
-    emailError.style.display = "block";
-    return false;
-  }
-
-  if (event === "") {
-    eventError.textContent = "Please select an event.";
-    eventError.style.display = "block";
-    return false;
-  }
-  return true;
+  // Return true only if all checks pass
+  return isNameValid && isEmailValid && isEventValid;
 }
 
+//Event listener for button disable/endable during user typing
 [nameInput, emailInput, eventSelect].forEach(el => {
     el.addEventListener("input", validatedForm);
 });
 
+//Form submission and object handler
+document.getElementById("eventForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (validatedForm()) {
+    const randomID = Math.floor(1000 + Math.random() * 9000);
+
+    const newAttendee = {
+      id: randomID,
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      event: eventSelect.value
+    };
+
+    attendees.push(newAttendee);
+    renderTable(attendees);
+    
+    this.reset(); 
+    registerBtn.disabled = true;
+  } else {
+    if (nameInput.value.trim() === "") {
+        nameError.textContent = "Full name is required.";
+        nameError.style.display = "block";
+    }
+    if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
+        emailError.textContent = "Enter a valid email address.";
+        emailError.style.display = "block";
+    }
+    if (eventSelect.value === "") {
+        eventError.textContent = "Please select an event.";
+        eventError.style.display = "block";
+    }
+  }
+});
+
+//Creating and appending table rows
+function renderTable(data) {
+  if (data.length === 0) {
+    attendeeTableBody.innerHTML = '<tr><td colspan="4">No attendees registered yet.</td></tr>';
+    return;
+  }
+
+  attendeeTableBody.innerHTML = "";
+
+  data.forEach(person => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>#${person.id}</td>
+      <td>${person.name}</td>
+      <td>${person.email}</td>
+      <td>${person.event}</td>
+    `;
+    attendeeTableBody.appendChild(row);
+  });
+}
+
+//Filter by event logic
+filterEvent.addEventListener("change", function() {
+  const selected = this.value;
+  if (selected === "all") {
+    renderTable(attendees);
+  } else {
+    const filtered = attendees.filter(a => a.event === selected);
+    renderTable(filtered);
+  }
+});
