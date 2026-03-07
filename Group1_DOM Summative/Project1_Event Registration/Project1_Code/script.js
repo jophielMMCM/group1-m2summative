@@ -1,50 +1,56 @@
-//Code for event registration error messages
-//"Full name is required."
+//Access elements from DOM tree
 const nameInput = document.getElementById("full name");
-//"Enter a valid email address."
 const emailInput = document.getElementById("email");
-//"Please select and event"
 const eventSelect = document.getElementById("event");
-//Register button should grayed-out/disabled if all the forms are not filled
 const registerBtn = document.getElementById("registerBtn");
-//default state: "No attendees registered yet"
 const attendeeList = document.getElementById("attendeeList");
-//Code for random ID generator
-
-//Code for filter by event
+const attendeeTableBody = document.getElementById("attendeeTableBody");
 const filterEvent = document.getElementById("filterEvent");
+
+//Error contents
+const nameError = document.getElementById("fullNameError");
+const emailError = document.getElementById("emailError");
+const eventError = document.getElementById("eventError");
 
 let attendees = [];
 
+//Form validation (event handling)
 function validatedForm() {
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const event = eventSelect.value;
 
-  let name = nameInput.value.trim();
-  let email = emailInput.value.trim();
-  let event = eventSelect.value;
+  //Button disable logic for empty fields
+  const isFilled = name !== "" && email !== "" && event !== "";
+  registerBtn.disabled = !isFilled; 
 
+  //Validation check
+  const isNameValid = name !== "";
+  const isEmailValid = email.includes("@") && email.includes(".");
+  const isEventValid = event !== "";
+
+  //Display error messages (manipulate CSS classes)
   if (name === "") {
-    alert("Full name is required.");
+    nameError.textContent = "Full name is required.";
+    nameError.style.display = "block";
     return false;
-
   }
 
   if (!email.includes("@") || !email.includes(".")) {
-    alert("Enter a valid email address.");
+    emailError.textContent = "Enter a valid email address.";
+    emailError.style.display = "block";
     return false;
-
   }
 
   if (event === "") {
-    alert("Please select an event.");
+    eventError.textContent = "Please select an event.";
+    eventError.style.display = "block";
     return false;
-
   }
-
   return true;
 }
 
-
-  
-
-
+[nameInput, emailInput, eventSelect].forEach(el => {
+    el.addEventListener("input", validatedForm);
+});
 
