@@ -23,9 +23,26 @@ function validatedForm() {
   const isFilled = name !== "" && email !== "" && event !== "";
   registerBtn.disabled = !isFilled; 
 
-  if (name !== "") nameError.style.display = "none";
-  if (email.includes("@") && email.includes(".")) emailError.style.display = "none";
-  if (event !== "") eventError.style.display = "none";
+  if (name !== "") {
+    nameError.style.display = "none";
+  } else {
+    nameError.textContent = "Full name is required.";
+    nameError.style.display = "block";
+  }
+  
+  if (email.includes("@") && email.includes(".")) {
+    emailError.style.display = "none";
+  } else {
+    emailError.textContent = "Enter a valid email address.";
+    emailError.style.display = "block";
+  }
+
+  if (event !== "") {
+    eventError.style.display = "none";
+  } else {
+    eventError.textContent = "Please select an event.";
+    eventError.style.display = "block";
+  }
 
   //Validation check
   const isNameValid = name !== "";
@@ -59,20 +76,7 @@ document.getElementById("eventForm").addEventListener("submit", function(e) {
     renderTable(attendees);
     
     this.reset(); 
-    registerBtn.disabled = true;
-  } else {
-    if (nameInput.value.trim() === "") {
-        nameError.textContent = "Full name is required.";
-        nameError.style.display = "block";
-    }
-    if (!emailInput.value.includes("@") || !emailInput.value.includes(".")) {
-        emailError.textContent = "Enter a valid email address.";
-        emailError.style.display = "block";
-    }
-    if (eventSelect.value === "") {
-        eventError.textContent = "Please select an event.";
-        eventError.style.display = "block";
-    }
+    validatedForm(); //reset button/error state
   }
 });
 
