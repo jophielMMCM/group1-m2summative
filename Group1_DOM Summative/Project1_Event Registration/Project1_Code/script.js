@@ -16,38 +16,37 @@ let attendees = [];
 //Form validation (event handling)
 function validatedForm() {
   const name = nameInput.value.trim();
-  const email = email.includes("@") && email.includes(".");
+  const email = emailInput.value.trim();
   const event = eventSelect.value;
 
-  //Button disable logic for empty fields
-  const isFilled = name !== "" && email !== "" && event !== "";
-  registerBtn.disabled = !isFilled; 
+  //Validation check
+  const isNameValid = name !== "";
+  const isEmailValid = email.includes("@") && email.includes(".");
+  const isEventValid = event !== "";
 
-  if (name !== "") {
+  //Button disable logic for empty fields
+  registerBtn.disabled = !(isNameValid && isEmailValid && isEventValid); 
+
+  if (isNameValid) {
     nameError.style.display = "none";
   } else {
     nameError.textContent = "Full name is required.";
     nameError.style.display = "block";
   }
   
-  if (email.includes("@") && email.includes(".")) {
+  if (isEmailValid) {
     emailError.style.display = "none";
   } else {
     emailError.textContent = "Enter a valid email address.";
     emailError.style.display = "block";
   }
 
-  if (event !== "") {
+  if (isEventValid) {
     eventError.style.display = "none";
   } else {
     eventError.textContent = "Please select an event.";
     eventError.style.display = "block";
   }
-
-  //Validation check
-  const isNameValid = name !== "";
-  const isEmailValid = email.includes("@") && email.includes(".");
-  const isEventValid = event !== "";
 
   // Return true only if all checks pass
   return isNameValid && isEmailValid && isEventValid;
@@ -111,4 +110,3 @@ filterEvent.addEventListener("change", function() {
     renderTable(filtered);
   }
 });
-
