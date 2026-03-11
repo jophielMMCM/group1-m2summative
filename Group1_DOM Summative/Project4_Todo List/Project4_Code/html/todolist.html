@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task Manager</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Task Manager</h1>
+
+<h2>Add New Task</h2>
+
+<!-- TASK INPUT -->
+<input type="text" id="taskInput" placeholder="Enter task">
+
+<!-- CATEGORY -->
+<label>Category:</label>
+<select id="category">
+<option value="Work">Work</option>
+<option value="Personal">Personal</option>
+<option value="Others">Others</option>
+</select>
+
+<br><br>
+
+<!-- DATE -->
+<label>Date:</label>
+<input type="date" id="taskDate">
+
+<br><br>
+
+<!-- PRIORITY -->
+<label>Priority:</label>
+<select id="priority">
+<option value="Low">Low</option>
+<option value="High">High</option>
+</select>
+
+<br><br>
+
+<!-- ADD BUTTON -->
+<button onclick="addTask()">Add Task</button>
+
+<hr>
+
+<!-- PRIORITY TASKS -->
+<h2>Priority Tasks</h2>
+<ul id="priorityList"></ul>
+
+<hr>
+
+<!-- INCOMPLETE TASKS -->
+<h2>Incomplete Tasks</h2>
+<ul id="incompleteList"></ul>
+
+<hr>
+
+<!-- COMPLETED TASKS -->
+<h2>Completed Tasks</h2>
+<ul id="completeList"></ul>
+
+</div>
+
+<script src="../script/script.js"></script>
+
+</body>
+</html>
