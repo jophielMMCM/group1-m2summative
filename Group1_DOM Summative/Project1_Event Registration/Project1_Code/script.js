@@ -16,7 +16,7 @@ let attendees = [];
 //Form validation (event handling)
 function validatedForm() {
   const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
+  const email = email.includes("@") && email.includes(".");
   const event = eventSelect.value;
 
   //Button disable logic for empty fields
@@ -111,3 +111,4 @@ filterEvent.addEventListener("change", function() {
     renderTable(filtered);
   }
 });
+
